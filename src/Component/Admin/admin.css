@@ -1,0 +1,113 @@
+.root {
+  background: linear-gradient(to right, rgb(82, 207, 82), rgb(83, 83, 191), rgb(211, 211, 66), rgb(94, 229, 229));
+  background-size: 300% 100%; /* Make the gradient wider */
+  animation: gradientAnimation 5s linear infinite; /* Add animation */
+  height: 100vh;
+  image-rendering: optimizeQuality;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%; /* Start from left */
+  }
+  50% {
+    background-position: 100% 50%; /* Move to right */
+  }
+  100% {
+    background-position: 0% 50%; /* Back to start */
+  }
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.admin-head {
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 35px;
+  background-color: crimson;
+  padding: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-left: 100px;
+}
+
+.card:hover {
+  transform: rotateY(360deg) scale(1.1);
+  background-color: #333;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-overlay {
+  background-color: rgb(74, 81, 207);
+  padding: 20px;
+  text-decoration: none;
+  position: relative; /* Ensure relative positioning for absolute children */
+}
+.card-overlay a {
+  color: #fff;
+  text-decoration: none; /* Remove underline */
+  margin-left: 90px;
+  visibility: hidden; /* Initially hide NavLink */
+}
+
+.card-overlay a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.card:hover .card-overlay a {
+  visibility: visible; /* Show NavLink on hover */
+}
+
+.card-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px; /* Adjusted margin */
+}
+
+.crd1 {
+  margin-left: 50px;
+}
+
+.crd1 {
+  margin-left: 50px;
+}
+
+.crd2 {
+  margin-left: 50px;
+}
+
+.crd3 {
+  margin-left: 50px;
+}
+
+.crd4 {
+  margin-left: 50px;
+  /* margin-top: 50px; */
+}
