@@ -14,8 +14,8 @@ import Student from './Component/Student/student';
 import Coordinator from './Component/Co-ordinator/coordinator';
 import Faculty from './Component/faculty/faculty';
 import { BrowserRouter as Router ,Route, Routes } from 'react-router-dom';
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -37,10 +37,9 @@ function App() {
           <Route path='/coordinator' element={<Coordinator/>}/>
           <Route path='/faculty' element={<Faculty/>}/>
         </Routes>
-        {/* <ToastContainer />  */}
+        <ToastContainer /> 
+        <Footer/>
       </Router>
-      
-      <Footer/>
 
     </>
   );
