@@ -1,0 +1,47 @@
+/* Company.css */
+
+.container1{
+  max-width: 520px;
+}
+
+.form-container {
+  max-width: 100px; /* Reduce the width of the form */
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #007bff; /* Set outer border of the form */
+  border-radius: 10px; /* Add rounded corners */
+  background-color: #f9f9f9; /* Add background color */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; /* Add border to input fields */
+  border-radius: 5px; /* Add rounded corners */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Primary button color */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}

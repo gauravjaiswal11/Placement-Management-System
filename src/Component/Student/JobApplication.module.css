@@ -1,0 +1,90 @@
+/* Reset default margin, padding, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container styles */
+.container {
+  max-width: 900px;
+  margin: 90px auto;
+  background-color: rgb(204, 87, 107);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply box styles */
+.apply-box {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.title-small {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: rgb(204, 87, 107);
+}
+h1 {
+  text-align: center;
+}
+
+/* Form container styles */
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Form control styles */
+.form-control {
+  margin-bottom: 20px;
+}
+
+/* Label styles */
+.label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input, select, textarea styles */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: royalblue;
+}
+
+button {
+  background-color: royalblue; /* Default button color */
+  color: #fff;
+  border: none;
+  padding: 4px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: navy; /* Button color on hover */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 460px) {
+  .textarea-control {
+    grid-column: 1 / span 1;
+  }
+}
