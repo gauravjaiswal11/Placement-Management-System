@@ -1,73 +1,57 @@
-import React from "react";
-import PlacementRecordCSS from "./Company.module.css";
+// PlacementRecord.js
+import React, { useState, useEffect } from "react";
+import styles from "./PlacementRecord.module.css";
 
 function PlacementRecord() {
+  const [driveRecords, setDriveRecords] = useState([]);
+
+  useEffect(() => {
+    fetchDriveRecords();
+  }, []);
+
+  const fetchDriveRecords = async () => {
+    try {
+      console.log("Fetching drive records...");
+      const response = await fetch("http://localhost:9090/api/drives/");
+      console.log("Response:", response);
+      const data = await response.json();
+      console.log("Data:", data);
+      setDriveRecords(data);
+    } catch (error) {
+      console.log("Error fetching drive records:", error);
+    }
+  };
+
   return (
-    <div className={PlacementRecordCSS.container}>
-      <div className={PlacementRecordCSS.tableContainer}>
-        <h1 className={PlacementRecordCSS.heading}>Placement Record</h1>
-        <table className={PlacementRecordCSS.table}>
-          <thead>
-            <tr>
-              <th>Sl. No</th>
-              <th>Student Name</th>
-              <th>Branch</th>
-              <th>Company</th>
-              <th>Package</th>
-              <th>Placement Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Sl. No">01.</td>
-              <td data-label="Student Name">Shivam Kumar Singh</td>
-              <td data-label="Branch">B.Tech CSE</td>
-              <td data-label="Company">TCS</td>
-              <td data-label="Package">5.6 lack</td>
-              <td data-label="Placement Date">10 nov 2025</td>
-            </tr>
-            <tr>
-              <td data-label="Sl. No">02.</td>
-              <td data-label="Student Name">Anand Kumar</td>
-              <td data-label="Branch">B.Tech CSE</td>
-              <td data-label="Company">TCS</td>
-              <td data-label="Package">5.6 lack</td>
-              <td data-label="Placement Date">10 nov 2025</td>
-            </tr>
-            <tr>
-              <td data-label="Sl. No">03.</td>
-              <td data-label="Student Name">Deepak Kumar</td>
-              <td data-label="Branch">B.Tech CSE</td>
-              <td data-label="Company">TCS</td>
-              <td data-label="Package">5.6 lack</td>
-              <td data-label="Placement Date">10 nov 2025</td>
-            </tr>
-            <tr>
-              <td data-label="Sl. No">04.</td>
-              <td data-label="Student Name">Jay Narayan</td>
-              <td data-label="Branch">B.Tech CSE</td>
-              <td data-label="Company">TCS</td>
-              <td data-label="Package">5.6 lack</td>
-              <td data-label="Placement Date">10 nov 2025</td>
-            </tr>
-            <tr>
-              <td data-label="Sl. No">05.</td>
-              <td data-label="Student Name">Anuj Kumar Singh</td>
-              <td data-label="Branch">B.Tech CSE</td>
-              <td data-label="Company">TCS</td>
-              <td data-label="Package">5.6 lack</td>
-              <td data-label="Placement Date">10 nov 2025</td>
-            </tr>
-            <tr>
-              <td data-label="Sl. No">06.</td>
-              <td data-label="Student Name">Gaurav Kumar</td>
-              <td data-label="Branch">B.Tech CSE</td>
-              <td data-label="Company">TCS</td>
-              <td data-label="Package">5.6 lack</td>
-              <td data-label="Placement Date">10 nov 2025</td>
-            </tr>
-          </tbody>
-        </table>
+    <div className={styles.recordBody}>
+      <h1>Placement Record</h1>
+      <div className={styles.container}>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Sl. No</th>
+                <th>Student Name</th>
+                <th>Branch</th>
+                <th>Company</th>
+                <th>Package</th>
+                <th>Passing Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              {driveRecords.map((driveRecord, index) => (
+                <tr key={index}>
+                  <td data-label="Sl. No">{index + 1}.</td>
+                  <td data-label="Student Name">{driveRecord.studentName}</td>
+                  <td data-label="Branch">{driveRecord.branch}</td>
+                  <td data-label="Company">{driveRecord.companyName}</td>
+                  <td data-label="Package">{driveRecord.package1}</td>
+                  <td data-label="Placement Date">{driveRecord.passingYear}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

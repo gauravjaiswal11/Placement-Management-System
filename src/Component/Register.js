@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from "react-router-dom";
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
     const navigate = useNavigate();
@@ -42,7 +42,7 @@ function Register() {
         .then((response) => {
             setIsSubmitting(false);
             localStorage.setItem('token', response.data.token);
-            // toast.success("Registration successful!");
+            toast.success("Registration successful!");
             navigate("/login");
             window.close();
             // setName("");
@@ -54,10 +54,10 @@ function Register() {
             setIsSubmitting(false);
             if (error.response && error.response.data && error.response.data.errors) {
                 setValidationErrors(error.response.data.errors);
-                // toast.error("Invalid Data register!!");
+                toast.error("Invalid Data register!!");
             } else {
                 console.error("Error occurred:", error);
-                // toast.error("Registration failed. Please try again.");
+                toast.error("Registration failed. Please try again.");
             }
         });
     };

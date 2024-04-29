@@ -1,54 +1,54 @@
-import React from 'react';
-import "./CompanyDetails.css"; 
-class ForHire extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      companies: [
-        { id: 1, name: 'Accenture', industry: 'Technology', Position: 'Software Engineer',Location: 'Bhubaneshwar', NoOfCandidates: '25', Package:'25lpa' },
-        { id: 2, name: 'TCS', industry: 'Technology', Position: 'Software Engineer',Location: 'Bhubaneshwar', NoOfCandidates: '20', Package:'25lpa' },
-        { id: 3, name: 'Amazon', industry: 'Technology', Position: 'Software Engineer',Location: 'Bhubaneshwar', NoOfCandidates: '05', Package:'25lpa' },
-        { id: 4, name: 'Google', industry: 'Technology', Position: 'Software Engineer',Location: 'Bhubaneshwar', NoOfCandidates: '15', Package:'25lpa' },
-        { id: 5, name: 'Microsoft', industry: 'Technology', Position: 'Software Engineer',Location: 'Bhubaneshwar', NoOfCandidates: '06', Package:'25lpa' },
-        { id: 6, name: 'Dessault System', industry: 'Technology', Position: 'Software Engineer',Location: 'Bhubaneshwar', NoOfCandidates: '25', Package:'25lpa' },
+import React, { useState, useEffect } from "react";
+import ForHireCSS from './ForHire.module.css';
 
-      ]
-    };
-  }
+function Company() {
+  const [companies, setCompanies] = useState([]);
 
-  render() {
-    return (
-      <div>
-        <h2 className='head'>FOR HIRE</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Company Name</th>
-              <th>Industry</th>
-              <th>Position</th>
-              <th>Location</th>
-              <th>NoOfCandidates</th>
-              <th>Package</th>
+  useEffect(() => {
+    fetchCompanies();
+  }, []);
+
+  const fetchCompanies = async () => {
+    try {
+      const response = await fetch("http://localhost:9090/api/companys/");
+      const data = await response.json();
+      setCompanies(data);
+    } catch (error) {
+      console.log("Error fetching companies:", error);
+    }
+  };
+
+  return (
+    <div className={ForHireCSS.hireBody}>
+      <h1>Currently Hiring</h1>
+    <div className={ForHireCSS.tableContainer}>
+      <table className={ForHireCSS.table}>
+        <thead>
+          <tr>
+            <th>Sl. No</th>
+            <th>Company Name</th>
+            <th>Location</th>
+            <th>Package</th>
+            <th>Profile</th>
+            <th>No of candidate required</th>
+          </tr>
+        </thead>
+        <tbody>
+          {companies.map((company, index) => (
+            <tr key={index}>
+              <td data-label="Company">{index + 1}.</td>
+              <td data-label="Company">{company.companyName}</td>
+              <td data-label="Company">{company.location}</td>
+              <td data-label="Company">{company.package1}</td>
+              <td data-label="Company">{company.profile}</td>
+              <td data-label="Company">{company.numberOfCandidates}</td>
             </tr>
-          </thead>
-          <tbody>
-            {this.state.companies.map(company => (
-              <tr key={company.id}>
-                <td>{company.id}</td>
-                <td>{company.name}</td>
-                <td>{company.industry}</td>
-                <td>{company.Position}</td>
-                <td>{company.Location}</td>
-                <td>{company.NoOfCandidates}</td>
-                <td>{company.Package}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+          ))}
+        </tbody>
+      </table>
+    </div>
+    </div>
+  );
 }
 
-export default ForHire;
+export default Company;

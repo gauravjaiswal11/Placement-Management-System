@@ -72,7 +72,7 @@ export default class Contact extends Component {
                   </a>
                   <ul className="social-link">
                     <li>
-                    <a
+                      <a
                         href="mailto:kameswar.rao@cutm.ac.in"
                         className="fa icon-mail"
                         aria-label="Email"

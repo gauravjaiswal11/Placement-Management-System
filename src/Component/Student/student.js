@@ -1,11 +1,27 @@
+/*eslint-disable */
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
 import "./student.css";
 
+
 function Student() {
+  const navigate = useNavigate();
+
+  // Handle logout
+  const handleLogout = () => {
+    navigate('/');
+  };
   return (
     <div className="std">
       <h1>Student Module</h1>
+      <div className="drop-user">
+      <div className="logoutButton" onClick={handleLogout}>
+        Logout
+      </div>
+    </div>
+    
 
       <div className="wrapper">
         <div className="card">
@@ -60,14 +76,16 @@ function Student() {
           </div>
         </div>
       </div>
-      <div className="logo">
-        <img
-          src="https://tse2.mm.bing.net/th?id=OIP.yplx3dBQYknGuRD2w9E__AHaJC&pid=Api&P=0&h=180"
-          alt="Businesswomen analyzing opportunity"
-        />
+      <div className="horizontal">
+        <div className="note">
+          <h3>*NOTE : This is informing that to you this site is under  construction.</h3>
+          
+          </div>
       </div>
     </div>
+    
   );
 }
+
 
 export default Student;

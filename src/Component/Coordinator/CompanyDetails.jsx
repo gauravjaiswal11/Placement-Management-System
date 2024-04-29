@@ -1,8 +1,7 @@
-// Company.js
 import React, { useState, useEffect } from "react";
 import CompanyCSS from "./Company.module.css";
 
-function Company({ showApplyButton = true }) {
+function Company() {
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function Company({ showApplyButton = true }) {
             <th>Package</th>
             <th>Profile</th>
             <th>No of candidates required</th>
-            {showApplyButton && <th>Apply form here</th>}
+            {/* <th>Apply form here</th> */}
           </tr>
         </thead>
         <tbody>
@@ -45,13 +44,11 @@ function Company({ showApplyButton = true }) {
               <td data-label="Package">{company.package1}</td>
               <td data-label="Profile">{company.profile}</td>
               <td data-label="No of candidates required">{company.numberOfCandidates}</td>
-              {showApplyButton && (
-                <td data-label="Apply form">
-                  <a href="/jobApplication" className={CompanyCSS.btn}>
-                    Apply Now
-                  </a>
-                </td>
-              )}
+              {/* <td data-label="Apply form">
+                <a href="/jobApplication" className={CompanyCSS.btn}>
+                  Apply Now
+                </a>
+              </td> */}
             </tr>
           ))}
         </tbody>

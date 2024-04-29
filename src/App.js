@@ -9,24 +9,36 @@ import Contact from "./Component/Contact";
 import Login from "./Component/Login";
 import Register from "./Component/Register";
 import "./css/login.css";
-// import Admin from "./Component/Admin/admin";
+import Logout from './Component/Logout';
+
+import Admin from "./Component/Admin/admin";
+import AdminCompanyDetail from "./Component/Admin/CompanyDetails";
+import AdminForHire from "./Component/Admin/ForHire";
+import AdminPlacementDrive from "./Component/Admin/PlacementDrive";
+import AdminReport from "./Component/Admin/Report";
+import AdminBulkMSg from "./Component/Admin/BulkSms";
+import AddDrive from "./Component/Admin/Adddrive";
+import ViewDrive from "./Component/Admin/ViewDrive";
+ 
+
 import Student from "./Component/Student/student";
 import JobApplication from "./Component/Student/JobApplication"
 import PlacemetRecord from "./Component/Student/PlacementRecord"
 import DownloadRecord from "./Component/Student/DownloadRecord"
 
 import Company from "./Component/Student/Company";
-// import Coordinator from "./Component/Co-ordinator/coordinator";
+// import Coordinator from "./Component/Coordinator/coordinator";
 import Faculty from "./Component/Faculty/Teacher";
-import Company1 from "./Component/Faculty/Company";
+import Company1 from "./Component/Faculty/CompanyView";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
+import { AuthProvider } from './Component/AuthContext';
+// import ProtectedRoute from './Component/PrivateRoute'; 
 
 function App() {
   return (
-    <>
-      <Header />
+    <AuthProvider>
       <Router>
         <Routes>
           <Route
@@ -34,6 +46,7 @@ function App() {
             path="/"
             element={
               <>
+                <Header />
                 <Home />
                 <About />
                 <Service />
@@ -42,9 +55,18 @@ function App() {
               </>
             }
           />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route path="/admin" element={<Admin />} /> */}
+          {/* Admin */}
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/companyDetails" element={<AdminCompanyDetail />} />
+          <Route path="/placementDrive" element={<AdminPlacementDrive />} />
+          <Route path="/forHire" element={<AdminForHire />} />
+          <Route path="/report" element={<AdminReport />} />
+          <Route path="/bulkSms" element={<AdminBulkMSg />} />
+          <Route path="/adddrive" element={<AddDrive />} />
+          <Route path="/viewdrive" element={<ViewDrive />} />
 
           <Route path="/student" element={<Student />} />
           <Route path="/jobApplication" element={<JobApplication />} />
@@ -52,14 +74,15 @@ function App() {
           <Route path="/downloadRecord" element={<DownloadRecord />} />
           <Route path="/company" element={<Company />} />
 
-          {/* <Route path="/coordinator" element={<Coordinator />} /> */}
+          {/* <Route path="/coordinator" element={<Coordinator />} />  */}
+          {/* <Route path="/faculty" element={<ProtectedRoute element={<Faculty />} />} />  */}
           <Route path="/faculty" element={<Faculty />} />
           <Route path="/company1" element={<Company1 />} />
         </Routes>
-        {/* <ToastContainer />  */}
+        <ToastContainer /> 
         <Footer />
       </Router>
-    </>
+    </AuthProvider>
   );
 }
 
